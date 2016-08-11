@@ -7,7 +7,7 @@ module.exports = function loadScript (src, cb) {
   firstScript = doc.getElementsByTagName(tag)[0]
   el.async = 1
   el.src = src
-  el.onload = function () { cb(null) }
+  el.onload = function () { cb() }
   el.onerror = function () { cb(new Error('failed to load: ' + src)) }
   firstScript.parentNode.insertBefore(el, firstScript)
 }
