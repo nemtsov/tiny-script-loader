@@ -1,0 +1,28 @@
+{
+  "name": "tiny-script-loader",
+  "version": "0.0.0",
+  "description": "Tiny script loader",
+  "scripts": {
+    "test": "sh -c 'npm run lint && npm run test-cover && istanbul check-coverage --statements 100 --functions 100 --branches 100 --lines 100'",
+    "lint": "standard '**/*.js'",
+    "test-cover": "istanbul cover _mocha -- -r should --recursive",
+    "test-watch": "mocha -r should --recursive -w -R min -t 20"
+  },
+  "keywords": [
+    "script",
+    "loader"
+  ],
+  "author": "nemtsov@gmail.com",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/behance/tiny-script-loader.git"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.4",
+    "mocha": "^3.0.2",
+    "should": "^11.0.0",
+    "sinon": "^1.17.5",
+    "standard": "^7.1.2"
+  }
+}
