@@ -27,4 +27,4 @@ loadScript('https://example.com/script.js')
 
 ## License
 
-[ISC](/LICENSE)
+[Apache-2.0](/LICENSE)
