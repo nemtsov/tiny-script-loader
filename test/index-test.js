@@ -38,6 +38,40 @@ describe('tiny-script-loader', function () {
       })
       el.onerror()
     })
+
+    it('should apply any given attributes', function (done) {
+      var attrsObj = {
+        crossOrigin: true,
+        type: 'javascript',
+        nonStandardProperty: 'thing',
+        invalidType: 'invalid'
+      }
+      unit.loadScript('__u__', function (data) {
+        el.crossOrigin.should.equal(true)
+        el.type.should.equal('javascript')
+        el.nonStandardProperty.should.equal('thing')
+        el.invalidType.should.equal('invalid')
+        done()
+      }, attrsObj)
+
+      el.onload()
+    })
+
+    it('should not override reserved attributes', function (done) {
+      var attrsObj = {
+        src: 'wrong.js',
+        onload: 'wronger',
+        onerror: 'wrongest'
+      }
+      unit.loadScript('__u__', function (data) {
+        el.src.should.not.equal('wrong.js')
+        el.onload.should.not.equal('wronger')
+        el.onerror.should.not.equal('wrongest')
+        done()
+      }, attrsObj)
+
+      el.onload()
+    })
   })
 
   describe('loadScriptPromised', function () {
@@ -57,6 +91,42 @@ describe('tiny-script-loader', function () {
         })
       el.onerror()
       return promise
+    })
+
+    it('should apply any given attributes', function (done) {
+      var attrsObj = {
+        crossOrigin: true,
+        type: 'javascript',
+        nonStandardProperty: 'thing',
+        invalidType: 'invalid'
+      }
+      unit.loadScriptPromised('__u__', attrsObj)
+        .then(function () {
+          el.crossOrigin.should.equal(true)
+          el.type.should.equal('javascript')
+          el.nonStandardProperty.should.equal('thing')
+          el.invalidType.should.equal('invalid')
+          done()
+        })
+
+      el.onload()
+    })
+
+    it('should not override reserved attributes', function (done) {
+      var attrsObj = {
+        src: 'wrong.js',
+        onload: 'wronger',
+        onerror: 'wrongest'
+      }
+      unit.loadScriptPromised('__u__', attrsObj)
+        .then(function () {
+          el.src.should.not.equal('wrong.js')
+          el.onload.should.not.equal('wronger')
+          el.onerror.should.not.equal('wrongest')
+          done()
+        })
+
+      el.onload()
     })
   })
 })
