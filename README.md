@@ -25,6 +25,16 @@ loadScript('https://example.com/script.js')
 })
 ```
 
+**Additional attributes**
+
+```js
+var loadScript = require('tiny-script-loader/loadScript')
+var loadScriptPromised = require('tiny-script-loader/loadScriptPromised')
+
+loadScript('https://example.com/script.js', callbackFn, { crossOrigin: true })
+loadScriptPromised('https://example.com/script.js', { type: 'javascript' })
+  .then(fn)
+```
 ## License
 
 [Apache-2.0](/LICENSE)
