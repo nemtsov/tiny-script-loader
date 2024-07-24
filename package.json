@@ -1,6 +1,6 @@
 {
   "name": "tiny-script-loader",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Tiny script loader",
   "scripts": {
     "test": "sh -c 'npm run lint && npm run test-cover && istanbul check-coverage --statements 100 --functions 100 --branches 100 --lines 100'",
